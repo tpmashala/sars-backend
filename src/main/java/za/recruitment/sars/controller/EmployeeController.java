@@ -136,8 +136,8 @@ public class EmployeeController {
 			@ApiResponse(code = 403, message = "Access to the requested employee details is forbidden"),
 			@ApiResponse(code = 404, message = "The requested employee details were not found"),
 			@ApiResponse(code = 500, message = "Internal error occured") })
-	@DeleteMapping(value = "{id}", produces = "application/json")
-	public @ResponseBody ResponseEntity<Object> deleteEmployee(@RequestAttribute("empId") Long id) {
+	@DeleteMapping(value = "/{id}", produces = "application/json")
+	public @ResponseBody ResponseEntity<Object> deleteEmployee(@PathVariable("id") Long id) {
 		employeeService.deleteEmployee(id);
 		return new ResponseEntity<> ( employeeService.deleteEmployee(id) , HttpStatus.OK);
 	}
